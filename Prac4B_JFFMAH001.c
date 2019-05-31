@@ -25,7 +25,7 @@
 // GLOBAL VARIABLES
 //====================================================================
 int battery_voltage;
-float f;
+float k;
 char buf[32];
 //====================================================================
 // FUNCTION DECLARATIONS
@@ -131,8 +131,8 @@ void display(void)
 //Battery voltage displayed after SW2 is pressed
 	else if (!(GPIOA->IDR & GPIO_IDR_2))
 	{
-		f= battery_voltage; //float variable f is set to the battery voltage
-		sprintf(buf, "%02u.%03u V", (int) (f/10.5), (int) (((f/10.5)- (int) (f/10.5)) * 1000)); //Maps 147 to 14V
+		k= battery_voltage; //float variable k is set to the battery voltage
+		sprintf(buf, "%02u.%03u V", (int) (k/10.5), (int) (((k/10.5)- (int) (k/10.5)) * 1000)); //Maps 147 to 14V
 		check_battery(); //battery voltage is determined
 		lcd_command(CLEAR); //Clears LCD screen
 		lcd_putstring("Battery:");//Display on line 1
